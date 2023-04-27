@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="px-6">
+
+    <h3 class="text-4xl text-center font-bold my-6">Your articles</h3>
+    <div class="grid lg:grid-cols-3 gap-3  py-2">
+        {% for publication in publications %}
+        
+        <div class="container my-12 mx-auto px-4 md:px-12 rounded-lg border-2 h-64" >
+            <h1 class="text-2xl text-center py-3 truncate font-bold" >{{publication.title}}</h1>
+            <p class="text-gray-600 ">{{publication.article|slice:":255"}}</p>
+         <small class="text-teal-400"> <a href="/blogs/{{publication.id}}/">Read more...</a></small>
+        </div>
+        {% empty %}
+    <p class="text-center text-4xl">No blog have been added yet</p>
+    {% endfor %}
+    </div>
+   
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}

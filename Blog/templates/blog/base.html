@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200">
+           <div> <a href="{% url 'blog' %}" class="text-3xl font-semibold">Blog site</a></div>
+            
+         
+                {% if user.is_authenticated %}
+                 <p class="text-lg">  Welcome back <span class="font-bold">{{ user.username }}</span>!</p>
+                 <div class="space-x-6">
+                     <a href="{% url 'dashboard' %}">All Blog </a>
+                     <a href="{% url 'new_blog' %}">create blog </a>
+                     <a href="{% url 'logout' %}" class="px-6 py-3 text-lg font-semibold bg-red-300 text-white rounded-xl hover:bg-red-700">logout </a>
+                 </div>     
+                     {% else %}
+                     <div class="space-x-6">
+                        <a href="#">Categories</a>
+                        <a href="{% url 'all_blogs' %}">Articles</a>
+                        <a href="#">Pricing</a>
+                        
+                         <a href="{% url 'register' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">
+                        Register 
+                    </a>
+                     <a href="{% url 'login' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">
+                        login
+                     </a>
+                     </div>
+                    
+                     {% endif %}
+                 
+            
+        </div>
+    </nav>
+    {% block content %} {% endblock content%}
+    <footer class="py-6 px-6 flex justify-between bg-gray-200">
+        <div class="w-2/3 pr-10">
+            <h3 class="mb-5 font-semibold text-gray-800">About</h3>
+
+            <p class="text-lg text-gray-500">Lorem ipsum bla bla bla. Lorem ipsum bla bla bla. Lorem ipsum bla bla bla.</p>
+        </div>
+
+        <div class="w-1/3">
+            <h3 class="mb-5 font-semibold text-gray-800">Menu</h3>
+
+            <ul class="space-y-2">
+                <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">About</a></li>
+                <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Contact</a></li>
+                <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Privacy policy</a></li>
+                <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Term of use</a></li>
+            </ul>
+        </div>
+    </footer>
+        
+        
+
+        
+        
+        
+</body>
+</html>

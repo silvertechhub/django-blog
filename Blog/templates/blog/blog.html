@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{%load humanize %}
+{% load static %}
+{% block content %}
+<div class="py-8 px-28">
+    <div class="">
+        <div class="pb-12">
+            <h2 class="text-4xl text-center font-bold pt-8 pb-10" >{{blog.title}}</h2>
+            <p class="italic font-bold text-right pr-20 text-base text-gray-800">Written by: {{blog.author}}</p>
+        </div>
+        <div class=" flex justify-center py-8">
+            <img src="{{blog.image.url}}" class="h-auto w-80" alt="blog-image"/>
+        </div>
+        
+        <p class="text-gray-600 text-lg px-10">{{blog.article}}</p>
+        <p class="text-right text-xs text-gray-400">{{blog.date_added| naturaltime}}</p>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="flex">
+        <a href="/blogs/{{blog.id}}/edit-blog" class="px-5 py-1 rounded hover:bg-teal-300 bg-teal-500 text-lg text-white mx-5">Edit </a>
+        <a href="/blogs/{{blog.id}}/delete-blog" class=" px-4 py-1 hover:bg-red-300 bg-red-500 text-white text-lg rounded ">  Delete</a>  
+    </div>
+    {% endif %}
+</div>
+
+
+
+
+
+{% endblock content %}

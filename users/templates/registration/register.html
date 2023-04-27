@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+
+{% block content %} 
+<div class="w-1/2 my-12  mx-auto p-6 bg-gray-100 rounded-xl">
+
+<h1 class="text-4xl text-center mb-6 text-gray-900">Register </h1>
+ <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3 text-center">
+      <label class="font-bold inline-block mb-2 ">Username</label><br>
+     <div class="flex justify-center"> {{ form.username }}</div>
+  </div>
+  <div class="mb-3 text-center">
+    <label class="font-bold inline-block mb-2">Email</label><br>
+    <div class="flex justify-center">{{ form.email }}</div>
+  </div>
+  <div class="mb-3 text-center">
+    <label class="font-bold inline-block mb-2">Password</label><br>
+    <div class="flex justify-center">{{ form.password1 }}</div>
+</div>
+<div class="mb-3 text-center">
+  <label class="font-bold inline-block mb-2">Confirm password</label><br>
+  <div class="flex justify-center">{{ form.password2 }}</div>
+</div>
+
+   <div class="flex justify-center">
+    <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white" type="submit">Register</button>
+   </div> 
+ </form>
+</div>
+
+ {% endblock content %}

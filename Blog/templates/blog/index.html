@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+{% load static %}
+<section >
+    <div class="grid lg:grid-cols-2 pt-16">
+        <div class="px-6">
+            <img src="{% static 'blog/images/article.jpg' %}">
+        </div>
+        <div class="px-6">
+            <h2 class="text-5xl font-bold py-4">Express Yourself in Writing!</h2>
+            <p class="pr-24 text-lg">Sign up and post your creative articles with the world. 
+               With over 10,000 daily readers on platform, be rest-assured that your voice would be heard
+            </p>
+           <div class="my-8"> <a href="{% url 'login' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">
+                Get started
+             </a></div>
+        </div>
+
+
+    </div>
+
+</section>
+<section class="mt-10 bg-gray-100">
+    <div class="grid lg:grid-cols-2 py-16 px-6">
+        <div class="">
+            <h4 class="text-4xl font-bold pr-6 py-4">Get access to thousands of articles daily!</h4>
+            <p class="pr-24 text-lg">
+                With our cross platform integration of static models, you can share your article,
+                In fact, inserting any fantasy text or a famous text, be it a poem, a speech, a literary passage, a song's text, etc., our text generator
+                 will provide the random extraction of terms and steps to compose your own exclusive Lorem Ipsum.
+                 Donec euismod sapien id odio iaculis, vitae ornare est rutrum. Vestibulum ante ipsum primis 
+                 in faucibus orci luctus et ultrices posuere cubilia curae; Fusce convallis tellus at sapien 
+                 pulvinar ultrices.
+                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            </p>
+           <div class="my-8"> <a href="{% url 'all_blogs' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">See the latest post today</a></div>
+        </div>
+        <div>
+            <img src="{% static 'blog/images/share.jpg' %}" />
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}

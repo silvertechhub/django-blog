@@ -1,0 +1,55 @@
+{% extends "blog/base.html" %}
+
+{% block content %} 
+
+{% if user.is_authenticated %}
+<div class=" py-6  bg-gray-100 rounded-xl">
+   <h1 class="text-4xl text-gray-900 text-center py-8" >Create new Blog </h1>
+  
+    <div class="w-1/2 pl-12 mx-auto ">
+        <form  class=" pl-24" method="post" enctype="multipart/form-data" action="{% url 'new_blog' %}">
+            {% csrf_token %}
+            <label>Category: </label><br><select class="border-2 w-80 py-1 px-6 rounded-xl" name="topic">
+                {% for topic in topics %}
+                    <option value="{{topic.id}}">{{topic.name}}</option>
+                {% endfor %}
+            </select>
+            <div>
+                <small class="text-gray-400">Can't find a category of your choice? Create one</small>
+                <a href="{% url 'category' %}" class="text-teal-900 hover:text-teal-400">Here</a>
+            </div>
+        
+           <div class="py-4"><label>Title: </label><br> <input type="text" class="border-2 w-80 py-2 px-6 rounded-xl" name="title"></div>
+        
+            <div class="py-4"><label>Blog: </label><br><textarea class="border-2 w-80 py-4 px-6 rounded-xl" name="article"></textarea><br></div>
+            
+            <label>Title: </label><br>
+            <div class="py-4">
+                <input type="file" class=" rounded-xl" name="image">
+            </div>
+       
+          
+            
+            <button type="submit" class="px-6 mx-36 py-2 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Submit</button>
+         </form>
+    </div>
+ 
+
+
+ {% else %}
+
+ <h2>You are not allowed here! Login first</h2>
+ 
+{% endif %}
+
+{% if form.errors or form.non_field_errors %}
+<div class="mb-3 w-1/2 p-6 bg-red-100 rounded-xl">
+    {% for field in form %}
+        {{ field.errors }}
+    {% endfor %}
+
+    {{ form.non_field_errors }}
+</div>
+{% endif %}
+</div>
+ {% endblock content %}

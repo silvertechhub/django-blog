@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block content %} 
+
+{% if user.is_authenticated %}
+<h1 class="text-4xl text-center py-4 text-gray-900">Update Blog </h1>
+ <form  method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+   {{ form.as_p }}
+ 
+    <button type="submit" class="px-3 py-1 rounded bg-blue-500 hover:bg-blue-300 text-white">Update</button>
+ </form>
+ {% else %}
+
+ <h2>No entry! Login first</h2>
+ {% endif %}
+
+ {% endblock content %}
